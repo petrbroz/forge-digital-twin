@@ -262,6 +262,12 @@ function initMaintenanceTab(mainViewer) {
         updateRevisionForm(ids);
         updateIssueForm(ids);
         updateRevisionChart(ids);
+
+        $('#maintenance-instructions embed').attr('src', '');
+        $('#maintenance-instructions div.alert').show();
+        $revisionStats.hide();
+        $revisionStatsAlert.show();
+        $('#viewer2d').hide();
         if (ids.length === 1) {
             // Choose one of the pages in the pdf with some nice diagrams
             const page = [8, 6, 5][ids[0] % 3];
@@ -276,12 +282,6 @@ function initMaintenanceTab(mainViewer) {
                 initializeViewerApp();
             }
             $('#viewer2d').show();
-        } else {
-            $('#maintenance-instructions embed').attr('src', '');
-            $('#maintenance-instructions div.alert').show();
-            $revisionStats.hide();
-            $revisionStatsAlert.show();
-            $('#viewer2d').hide();
         }
     });
     $revisionStats.hide();
